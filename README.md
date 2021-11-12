@@ -2,6 +2,15 @@
 Sample web application using node.js, express, mongodb.  Accesses sample airbnb database.  
 > CPA Semester 3 Lab 9, Nov 12
 
+
+## Git add/commit/push
+> Always stage commits before switching branches
+```
+git add -A // Stages all modifications
+git commit -m "Message" // Commits with a message
+git push // Pushes to repo
+```
+
 ## Git branching
 ```
 git branch cleanup // creates branch cleanup
@@ -9,9 +18,8 @@ git checkout cleanup // checkout into cleanup
 OR 
 git checkout -b branchName // do both at the same time
 
-git branch -V // Check current branches
+git branch -v // Check current branches
 ```
-
 
 ## Git merging
 
@@ -38,3 +46,11 @@ git branch -V // Check current branches
 
 ### Cleanup - Delete Branch
 ![image](https://user-images.githubusercontent.com/29869696/141522743-776b027b-7c97-41d6-97ce-8baf19016cdf.png)
+
+
+## Git pull
+> Update your master code by pulling staged changes
+```
+git checkout main // go back to main
+git pull // pulls latest changes, including branch merge
+```
