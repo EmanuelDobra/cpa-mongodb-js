@@ -1,50 +1,52 @@
 const mongoClient = require("./config");
 
-async function findListing1(response)
-{
-  console.log('Find Listing');
-  let connection = await mongoClient.connect()
-  console.log('Connected');
-  let db = await connection.db('sample_airbnb');
-  console.log('open airbnb databse')
+// async function findListing1(response)
+// {
+//   console.log('Find Listing');
+//   let connection = await mongoClient.connect()
+//   console.log('Connected');
+//   let db = await connection.db('sample_airbnb');
+//   console.log('open airbnb databse')
 
-  let listingsAndReviews = await db.collection('listingsAndReviews')
-  console.log('select listings and reviews')
+//   let listingsAndReviews = await db.collection('listingsAndReviews')
+//   console.log('select listings and reviews')
 
-  let listing = await listingsAndReviews.findOne({})
+//   let listing = await listingsAndReviews.findOne({})
 
-  console.log('Close db')
+//   console.log('Close db')
 
-  response.send(listing)
-  connection.close()  
-}
+//   response.send(listing)
+//   connection.close()  
+// }
 
-async function findListing2 (response)
-{
-  try{
-    var connection = await mongoClient.connect()
-    let db = await connection.db('sample_airbnb');
-    let listingsAndReviews = await db.collection('listingsAndReviews')
-    let listing = await listingsAndReviews.findOne({})
-    response.send(listing)
-  }
-  catch(error)
-  {
-    console.log(error)
-    response.send(error)
-  }
-  finally{
-    // This is where any cleanup code goes
-    connection.close()
-  }
-}
+// async function findListing2 (response)
+// {
+//   try{
+//     var connection = await mongoClient.connect()
+//     let db = await connection.db('sample_airbnb');
+//     let listingsAndReviews = await db.collection('listingsAndReviews')
+//     let listing = await listingsAndReviews.findOne({})
+//     response.send(listing)
+//   }
+//   catch(error)
+//   {
+//     console.log(error)
+//     response.send(error)
+//   }
+//   finally{
+//     // This is where any cleanup code goes
+//     connection.close()
+//     // Note: Finally block gets executed before return if you had
+//     // a return statement in the try.
+//   }
+// }
 
-async function findListing3(response, criteria)
+async function findListing(response, criteria)
 {
   console.log("Search for: ", criteria);
 
   mongoClient.connect()
-    .then(connection=>connection.db('sample_airbnb'))
+    .then(connection=>connection.db('sample_airbnb')) // instead of using await
     .then(db=>db.collection('listingsAndReviews'))
     .then(listingsAndReviews=>listingsAndReviews.findOne(criteria))
     .then(listing=>response.send(listing))
@@ -76,7 +78,7 @@ async function findListings (response, criteria)
   }
 }
 
-let findListing = findListing3
+// let findListing = findListing3
 
 module.exports = {findListing, findListings}  // Shortcut for {findListing:findListing, findListings:findListings}
 
