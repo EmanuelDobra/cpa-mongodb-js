@@ -11,3 +11,9 @@ git checkout -b branchName // do both at the same time
 
 git branch -V // Check current branches
 ```
+
+
+## Git merging
+- Navigate to your repo on github
+- Go to *Pull Requests*
+- Create new Pull Request
