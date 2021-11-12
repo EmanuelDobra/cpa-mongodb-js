@@ -8,4 +8,6 @@ git branch cleanup // creates branch cleanup
 git checkout cleanup // checkout into cleanup
 OR 
 git checkout -b branchName // do both at the same time
+
+git branch -V // Check current branches
 ```
